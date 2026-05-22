@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "Bash(npm install *)",
+      "Bash(ls \"c:\\\\Users\\\\misha\\\\OneDrive\\\\Desktop\\\\Bersk\")",
+      "Read(//c/Users/misha/OneDrive/Desktop/Bersk/**)",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\misha\\\\OneDrive\\\\Desktop\\\\Bersk\\\\bersk tech\\\\bersk-site\\\\public\\\\logos\")",
+      "Bash(Out-Null)",
+      "Bash(Copy-Item \"c:\\\\Users\\\\misha\\\\OneDrive\\\\Desktop\\\\Bersk\\\\Logos\\\\Artboard 1FSFSF.png\" \"c:\\\\Users\\\\misha\\\\OneDrive\\\\Desktop\\\\Bersk\\\\bersk tech\\\\bersk-site\\\\public\\\\logos\\\\logo-white.png\")",
+      "Bash(Copy-Item \"c:\\\\Users\\\\misha\\\\OneDrive\\\\Desktop\\\\Bersk\\\\Logos\\\\Artboard 1 copyFD.png\" \"c:\\\\Users\\\\misha\\\\OneDrive\\\\Desktop\\\\Bersk\\\\bersk tech\\\\bersk-site\\\\public\\\\logos\\\\logo-dark.png\")",
+      "Bash(npm run *)",
+      "PowerShell(Copy-Item \"c:\\\\Users\\\\misha\\\\OneDrive\\\\Desktop\\\\Bersk\\\\Logos\\\\39Artboard 4.png\" \"c:\\\\Users\\\\misha\\\\OneDrive\\\\Desktop\\\\Bersk\\\\bersk tech\\\\bersk-site\\\\public\\\\favicon.png\")"
+    ]
+  }
+}
