@@ -16,13 +16,13 @@ const serviceBlocks = [
       'Technical SEO cleanup (speed, indexing, structure)',
       'Local content optimization',
     ],
-    goal: 'Get your business showing up when people are ready to buy — not just browsing.',
+    goal: 'Get your business showing up when people are ready to buy, not just browsing.',
   },
   {
     icon: <MapPin size={28} />,
     eyebrow: 'Service 02',
     title: 'Google Business Profile (Google Maps Ranking)',
-    desc: 'Most local businesses lose customers here. We optimize and manage your Google Business Profile so you appear in the Google Maps "3-pack" — which is where most calls come from.',
+    desc: 'Most local businesses lose customers here. We optimize and manage your Google Business Profile so you appear in the Google Maps "3-pack", which is where most calls come from.',
     examples: null,
     includes: [
       'Full Google Business Profile optimization',
@@ -92,7 +92,7 @@ export default function Services() {
           </h1>
           <p className="section-body">
             Bersk helps local service businesses get more calls, more leads, and more customers
-            by improving how they show up on Google — in Las Cruces, NM and surrounding areas.
+            by improving how they show up on Google in Las Cruces, NM and surrounding areas.
           </p>
         </div>
       </div>

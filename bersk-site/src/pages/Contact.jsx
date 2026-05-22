@@ -8,7 +8,7 @@ const steps = [
   },
   {
     title: 'We identify what\'s costing you leads',
-    desc: 'Slow website, bad SEO structure, weak Maps ranking, missing backlinks — we find it all.',
+    desc: 'Slow website, bad SEO structure, weak Maps ranking, missing backlinks. We find it all.',
   },
   {
     title: 'We send you a clear action plan',
@@ -78,7 +78,7 @@ export default function Contact() {
                 ))}
               </ul>
               <p style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 14 }}>
-                If customers search for your service on Google — we can help you get in front of them.
+                If customers search for your service on Google, we can help you get in front of them.
               </p>
             </div>
 

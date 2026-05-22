@@ -10,7 +10,7 @@ const services = [
   {
     icon: <Search size={26} />,
     title: 'Local SEO',
-    desc: 'Rank higher in Google search so customers in your area can actually find you — not your competitors.',
+    desc: 'Rank higher in Google search so customers in your area can actually find you, not your competitors.',
   },
   {
     icon: <MapPin size={26} />,
@@ -29,7 +29,7 @@ const differentiators = [
   'Rankings that produce calls, not vanity metrics',
   'Strategies that work in competitive local markets',
   'Optimized for Las Cruces and surrounding regions',
-  "Transparent process — you always know what's happening",
+  "Transparent process: you always know what's happening",
 ]
 
 const steps = [
@@ -121,7 +121,7 @@ export default function Home() {
         <div className="container">
           <div className="section-eyebrow">What We Do</div>
           <h2 className="section-title">
-            We get you found where it matters most —{' '}
+            We get you found where it matters most:{' '}
             <span className="gradient-text">Google.</span>
           </h2>
           <p className="section-body">
