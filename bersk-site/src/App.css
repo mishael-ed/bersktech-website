@@ -312,11 +312,12 @@ img { display: block; max-width: 100%; }
   transform: translateY(0);
 }
 .mobile-link {
-  font-size: 36px;
+  font-size: 15px;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  padding: 16px 0;
+  padding: 12px 0;
   text-align: center;
   width: 100%;
   border-bottom: 1px solid var(--border);

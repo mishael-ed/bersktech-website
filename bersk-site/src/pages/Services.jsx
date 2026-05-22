@@ -98,6 +98,7 @@ export default function Services() {
       </div>
 
       {/* Service blocks */}
+      <section className="section section-open">
       <div className="container">
         {serviceBlocks.map((s) => (
           <div key={s.title} className="service-block">
@@ -136,9 +137,10 @@ export default function Services() {
           </div>
         ))}
       </div>
+      </section>
 
       {/* Our approach */}
-      <div className="section" style={{ borderTop: '1px solid var(--border)' }}>
+      <section className="section section-solid">
         <div className="container">
           <div className="section-eyebrow">Our Approach</div>
           <h2 className="section-title">Simple. Focused. Effective.</h2>
@@ -155,10 +157,10 @@ export default function Services() {
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Who we work with */}
-      <div className="section" style={{ borderTop: '1px solid var(--border)' }}>
+      <section className="section section-open">
         <div className="container">
           <div className="section-eyebrow">Who We Work With</div>
           <h2 className="section-title">We work best with local service businesses</h2>
@@ -174,7 +176,7 @@ export default function Services() {
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
       {/* CTA */}
       <div className="cta-section">
