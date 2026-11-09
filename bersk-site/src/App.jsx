@@ -1,67 +1,91 @@
 import './App.css'
 import {
-  MapPin, Phone, Globe, CheckCircle2, TrendingUp,
-  Search, Star, ArrowUpRight, ChevronRight, Mail,
-  Zap, Shield, BarChart3, Users,
+  Globe, CheckCircle2, TrendingUp, Code2, Bot, Clock, Cpu, Cloud, Layers,
+  Star, ArrowUpRight, ChevronRight, Mail, Zap, Shield, BarChart3, Users,
+  UserX, MessageSquareOff, Wallet, Compass,
 } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 const services = [
   {
-    icon: <Search size={26} />,
-    title: 'Local SEO',
-    desc: 'Rank higher in Google search so customers in your area can actually find you, not your competitors.',
-  },
-  {
-    icon: <MapPin size={26} />,
-    title: 'Google Maps Optimization',
-    desc: 'Dominate the Map Pack. We optimize your Google Business Profile for high-intent local searches.',
-  },
-  {
     icon: <Globe size={26} />,
-    title: 'Website Design That Converts',
-    desc: 'Fast, mobile-first websites built to turn visitors into phone calls and real customers.',
+    title: 'Websites & Web Apps',
+    desc: 'Fast, modern websites, portals and web apps built around your brand and designed to turn visitors into customers.',
+  },
+  {
+    icon: <Code2 size={26} />,
+    title: 'Custom Software Systems',
+    desc: 'Dashboards, CRMs, booking and internal tools tailored to how your business actually runs, not off-the-shelf compromises.',
+  },
+  {
+    icon: <Bot size={26} />,
+    title: 'AI & Automation',
+    desc: 'AI agents, appointment setters, chatbots and automated workflows that handle the repetitive work around the clock.',
+  },
+]
+
+const problems = [
+  {
+    icon: <UserX size={26} />,
+    title: "Can't find a developer you trust",
+    desc: 'Good developers are hard to find, and harder to know are reliable. Many people end up hiring and firing one after another.',
+  },
+  {
+    icon: <MessageSquareOff size={26} />,
+    title: "Hard to get them to see your vision",
+    desc: "You know exactly what you want, but it gets lost in translation between your idea and what's actually built.",
+  },
+  {
+    icon: <Wallet size={26} />,
+    title: 'Scared to risk your whole budget',
+    desc: "Putting everything into an app without knowing if it will succeed is a real fear, and a fair one.",
+  },
+  {
+    icon: <Compass size={26} />,
+    title: 'No proven system to follow',
+    desc: 'Without a clear process for planning, designing and developing, time and money get wasted on features nobody needs.',
   },
 ]
 
 const differentiators = [
-  'Built specifically for local service businesses',
-  'Rankings that produce calls, not vanity metrics',
-  'Strategies that work in competitive local markets',
-  'Optimized for Las Cruces and surrounding regions',
+  'AI-powered speed with human expertise guiding every step',
+  'We plan, design and build, so you never have to hunt for a developer',
+  'Your vision is captured clearly before a line of code is written',
+  'Launch on time and under budget, with no wasted features',
+  'One team for your website, software and automation',
   "Transparent process: you always know what's happening",
 ]
 
 const steps = [
   {
-    step: '01', title: 'Free SEO Audit',
-    desc: "We review your website and Google presence to find exactly what's holding you back.",
+    step: '01', title: 'Discovery & Vision',
+    desc: 'We dig into your idea and goals until we truly see your vision, and test whether it can succeed before you commit your budget.',
     items: null,
   },
   {
-    step: '02', title: 'Optimization Plan',
-    desc: 'We fix the highest-impact issues first:',
-    items: ['Google Business Profile setup', 'On-page SEO improvements', 'Website structure & speed'],
+    step: '02', title: 'Plan & Design',
+    desc: 'We map out a clear plan and scope:',
+    items: ['Feature prioritization, no useless features', 'UI/UX and architecture', 'Clear timeline and fixed pricing'],
   },
   {
-    step: '03', title: 'Growth System',
-    desc: 'We build long-term visibility:',
-    items: ['Local authority signals', 'Citations & backlinks', 'Review strategy', 'Ongoing optimization'],
+    step: '03', title: 'Build & Launch',
+    desc: 'AI-accelerated, human-led development:',
+    items: ['Development & integrations', 'Testing and deployment', 'Training and handover', 'Ongoing support & iteration'],
   },
 ]
 
 const industries = [
-  'Contractors', 'Cleaning Companies', 'HVAC Services', 'Plumbers',
-  'Roofers', 'Landscaping', 'Home Services', 'Restaurants', 'Realtors', 'Salons',
+  'Individuals & Creators', 'Founders & Startups', 'Small Businesses', 'Agencies',
+  'Real Estate', 'Healthcare', 'E-commerce', 'Finance', 'Education', 'Enterprise Teams',
 ]
 
-const cities = ['Las Cruces, NM', 'Mesilla', 'Sunland Park', 'El Paso Region']
+const stack = ['Web & Mobile', 'AI & Automation', 'Cloud & DevOps', 'Data & Analytics']
 
 const results = [
-  { icon: <TrendingUp size={22} />, text: 'Higher Google Maps visibility' },
-  { icon: <Phone size={22} />,     text: 'More calls from local searches' },
-  { icon: <BarChart3 size={22} />, text: 'Better website conversion rates' },
-  { icon: <Star size={22} />,      text: 'Stronger online reputation' },
+  { icon: <Clock size={22} />,      text: 'Hours saved through automation' },
+  { icon: <TrendingUp size={22} />, text: 'Faster growth with scalable systems' },
+  { icon: <BarChart3 size={22} />,  text: 'Clearer data and better decisions' },
+  { icon: <Star size={22} />,       text: 'A stronger, more professional brand' },
 ]
 
 export default function Home() {
@@ -77,21 +101,21 @@ export default function Home() {
         <div className="hero-overlay" aria-hidden="true" />
         <div className="container hero-inner">
           <div className="hero-label">
-            <span className="hero-label-dot" />
-            Las Cruces, NM
+            Bersk Technologies
             <span className="hero-label-divider" />
-            Local SEO Experts
+            Tech Solutions for Everyone
           </div>
           <h1 className="hero-headline">
-            Grow Your Business With<br />
-            <span className="gradient-text">Better Rankings &amp; More Calls.</span>
+            Your Ideas, Built With Tech.<br />
+            <span className="gradient-text">Brought to Life.</span>
           </h1>
           <p className="hero-sub">
-            Bersk helps service businesses in Las Cruces show up higher on Google,
-            get found in the Map Pack, and turn searches into real customers.
+            Have an idea but can't code? Bersk Technologies turns it into real software, websites and
+            AI automation through a proven, AI-powered, human-led process, so you launch on time,
+            on budget, and get it right the first time.
           </p>
           <div className="hero-ctas">
-            <NavLink to="/contact" className="btn btn-primary btn-lg">Get a Free SEO Audit</NavLink>
+            <NavLink to="/contact" className="btn btn-primary btn-lg">Book a Free Consultation</NavLink>
             <a href="#how" className="btn btn-ghost btn-lg">See How It Works <ChevronRight size={15} /></a>
           </div>
         </div>
@@ -101,12 +125,12 @@ export default function Home() {
       <div className="trust-bar">
         <div className="container trust-inner">
           {[
-            { icon: <Search size={14} />, text: 'Local SEO' },
-            { icon: <MapPin size={14} />, text: 'Map Pack Optimization' },
-            { icon: <Globe size={14} />, text: 'Web Design' },
-            { icon: <Zap size={14} />, text: 'Mobile-First Performance' },
-            { icon: <Star size={14} />, text: 'Review Strategy' },
-            { icon: <Shield size={14} />, text: 'Transparent Reporting' },
+            { icon: <Globe size={14} />, text: 'Websites' },
+            { icon: <Code2 size={14} />, text: 'Custom Software' },
+            { icon: <Bot size={14} />, text: 'AI Automation' },
+            { icon: <Cloud size={14} />, text: 'Cloud & Integrations' },
+            { icon: <Zap size={14} />, text: 'Fast Delivery' },
+            { icon: <Shield size={14} />, text: 'Secure & Reliable' },
           ].map((item, i) => (
             <span key={i} className="trust-item">
               <span className="trust-icon">{item.icon}</span>
@@ -116,17 +140,45 @@ export default function Home() {
         </div>
       </div>
 
+      {/* ── THE PROBLEM ── */}
+      <section className="section section-solid problem-section">
+        <div className="container">
+          <div className="section-eyebrow">Sound Familiar?</div>
+          <h2 className="section-title">
+            Got an idea for an app or software,{' '}
+            <span className="gradient-text">but you don't know how to code?</span>
+          </h2>
+          <p className="section-body">
+            You're not alone. Most great ideas never launch, not because they're bad, but because
+            building them without a proven system is risky, slow and expensive.
+          </p>
+          <div className="services-grid problem-grid">
+            {problems.map((p) => (
+              <div key={p.title} className="glass-card service-card">
+                <div className="service-icon">{p.icon}</div>
+                <h3 className="service-title">{p.title}</h3>
+                <p className="service-desc">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className="problem-note">
+            The result? Wasted time, wasted money and an idea that never takes off.
+            It doesn't have to go that way.
+          </p>
+        </div>
+      </section>
+
       {/* ── WHAT WE DO ── */}
       <section className="section section-open" id="services">
         <div className="container">
           <div className="section-eyebrow">What We Do</div>
           <h2 className="section-title">
-            We get you found where it matters most:{' '}
-            <span className="gradient-text">Google.</span>
+            Everything your business needs to{' '}
+            <span className="gradient-text">run on tech.</span>
           </h2>
           <p className="section-body">
-            Most customers don't scroll. They click the top results on Google Maps or the first few
-            websites they see. If you're not there, you're losing calls every single day.
+            From your first website to fully automated operations, we build the digital
+            foundation that helps businesses and individuals turn ideas into working products.
           </p>
           <div className="services-grid">
             {services.map((s) => (
@@ -145,11 +197,11 @@ export default function Home() {
         <div className="container">
           <div className="section-eyebrow">Why Bersk</div>
           <h2 className="section-title">
-            Most agencies chase traffic.{' '}
-            <span className="gradient-text">We chase customers.</span>
+            Most developers just write code.{' '}
+            <span className="gradient-text">We give you a proven system.</span>
           </h2>
           <p className="section-body">
-            We don't just build websites or "do SEO." We build systems that generate real leads for local businesses.
+            Our AI-powered, human-led development process takes your idea from plan to launch, so you validate before you overspend and build the right thing, the right way, the first time.
           </p>
           <ul className="check-list">
             {differentiators.map((d) => (
@@ -166,7 +218,12 @@ export default function Home() {
       <section className="section section-open" id="how">
         <div className="container">
           <div className="section-eyebrow">Our Process</div>
-          <h2 className="section-title">How It Works</h2>
+          <h2 className="section-title">
+            Our AI-Powered, <span className="gradient-text">Human-Led</span> Process
+          </h2>
+          <p className="section-body">
+            AI makes us faster. Experienced people make the decisions. The result is software built the right way, the first time.
+          </p>
           <div className="steps-grid">
             {steps.map((s) => (
               <div key={s.step} className="glass-card step-card">
@@ -192,11 +249,11 @@ export default function Home() {
           <div className="who-grid">
             <div className="who-left">
               <div className="section-eyebrow">Who We Serve</div>
-              <h2 className="section-title">Built for local service businesses</h2>
+              <h2 className="section-title">Built for businesses and individuals with big ideas</h2>
               <p className="section-body">
-                If your customers search Google before calling, we can help you grow.
+                Whether you're a company upgrading operations or an individual with an idea, we can build it.
               </p>
-              <NavLink to="/contact" className="btn btn-primary btn-lg">Start Growing</NavLink>
+              <NavLink to="/contact" className="btn btn-primary btn-lg">Start a Project</NavLink>
             </div>
             <div className="who-right">
               <div className="industries-grid">
@@ -212,21 +269,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── LOCAL FOCUS ── */}
+      {/* ── CAPABILITIES ── */}
       <section className="section section-open local-section">
         <div className="container">
-          <div className="section-eyebrow">Local Focus</div>
-          <h2 className="section-title">We help businesses rank in:</h2>
+          <div className="section-eyebrow">Capabilities</div>
+          <h2 className="section-title">Our tech toolkit spans:</h2>
           <div className="cities-grid">
-            {cities.map((c) => (
-              <div key={c} className="glass-card city-card">
-                <MapPin size={18} className="city-icon" />
-                <span className="city-name">{c}</span>
-              </div>
-            ))}
+            {stack.map((c, i) => {
+              const Icon = [Layers, Cpu, Cloud, BarChart3][i]
+              return (
+                <div key={c} className="glass-card city-card">
+                  <Icon size={18} className="city-icon" />
+                  <span className="city-name">{c}</span>
+                </div>
+              )
+            })}
           </div>
           <p className="local-cta-note">
-            If your competitors are showing up above you on Google, we fix that.
+            If it runs on technology, we can design it, build it and automate it.
           </p>
         </div>
       </section>
@@ -245,7 +305,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="results-note">Real case studies added as they become available.</p>
+          <p className="results-note">Project case studies added as they become available.</p>
         </div>
       </section>
 
@@ -253,15 +313,15 @@ export default function Home() {
       <section className="cta-section" id="audit">
         <div className="cta-glow" aria-hidden="true" />
         <div className="container cta-inner">
-          <div className="section-eyebrow">Free Audit</div>
+          <div className="section-eyebrow">Let's Build</div>
           <h2 className="cta-title">
-            Want more customers finding<br />your business on Google?
+            Got an idea you want<br />to bring to life?
           </h2>
           <p className="cta-sub">
-            Get a free SEO audit and see exactly what's holding your business back.
+            See our AI-powered, human-led process and let us help you launch on time and under budget, the right way, the first time.
           </p>
           <NavLink to="/contact" className="btn btn-primary btn-xl">
-            <Mail size={18} /> Get My Free SEO Audit
+            <Mail size={18} /> Start Your Project
           </NavLink>
         </div>
       </section>

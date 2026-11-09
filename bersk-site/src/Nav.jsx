@@ -38,12 +38,13 @@ export default function Nav() {
       <nav ref={navRef} className="nav">
         <div className="container nav-inner">
           <NavLink to="/" onClick={close}>
-            <img src="/logos/logo-v2.png" alt="Bersk" className="nav-logo" />
+            <img src="/logos/logo-blue.png" alt="Bersk" className="nav-logo" />
           </NavLink>
 
           <div className="nav-links">
             <NavLink to="/" end className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')}>Home</NavLink>
             <NavLink to="/services" className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')}>Services</NavLink>
+            <NavLink to="/case-studies" className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')}>Case Studies</NavLink>
             <NavLink to="/contact" className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')}>Contact</NavLink>
           </div>
 
@@ -57,6 +58,7 @@ export default function Nav() {
         <div className="mobile-overlay-links">
           <NavLink to="/" end className={({ isActive }) => 'mobile-link' + (isActive ? ' active' : '')} onClick={close}>Home</NavLink>
           <NavLink to="/services" className={({ isActive }) => 'mobile-link' + (isActive ? ' active' : '')} onClick={close}>Services</NavLink>
+          <NavLink to="/case-studies" className={({ isActive }) => 'mobile-link' + (isActive ? ' active' : '')} onClick={close}>Case Studies</NavLink>
           <NavLink to="/contact" className={({ isActive }) => 'mobile-link' + (isActive ? ' active' : '')} onClick={close}>Contact</NavLink>
         </div>
       </div>

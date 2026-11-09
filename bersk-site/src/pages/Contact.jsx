@@ -1,24 +1,24 @@
 import { useState } from 'react'
-import { Mail, MapPin, Phone, CheckCircle2 } from 'lucide-react'
+import { Mail, MapPin, CheckCircle2 } from 'lucide-react'
 
 const steps = [
   {
-    title: 'We review your online presence',
-    desc: 'We check your website, Google Business Profile, and local rankings.',
+    title: 'We learn about your business',
+    desc: "We listen until we see your vision clearly, whether it's a new idea or a problem to solve.",
   },
   {
-    title: 'We identify what\'s costing you leads',
-    desc: 'Slow website, bad SEO structure, weak Maps ranking, missing backlinks. We find it all.',
+    title: 'We find where tech can help',
+    desc: 'Manual processes, outdated websites, missed leads, disconnected tools. We spot the opportunities.',
   },
   {
-    title: 'We send you a clear action plan',
-    desc: 'No fluff. Just what needs to change to start getting more calls.',
+    title: 'We send you a clear proposal',
+    desc: 'No fluff. Just the solution, scope, timeline and pricing.',
   },
 ]
 
 const whoWeHelp = [
-  'Contractors', 'Cleaning companies', 'HVAC & plumbing',
-  'Roofing & construction', 'Local service providers',
+  'Individuals with an idea', 'Founders & startups', 'Small businesses',
+  'Growing companies', 'Established enterprises',
 ]
 
 export default function Contact() {
@@ -43,12 +43,12 @@ export default function Contact() {
         <div className="container">
           <div className="section-eyebrow">Contact Us</div>
           <h1 className="section-title">
-            Get a Free SEO Audit<br />&amp;{' '}
-            <span className="gradient-text">Growth Plan</span>
+            Book a Free Consultation<br />&amp;{' '}
+            <span className="gradient-text">Project Plan</span>
           </h1>
           <p className="section-body">
-            If your business isn't showing up on Google, you're losing calls every single day.
-            We'll show you exactly what's holding you back and what to fix.
+            Whether you're a business or an individual, tell us what you want to build or automate. We'll map out the smartest way
+            to do it and show you exactly what it takes.
           </p>
         </div>
       </div>
@@ -78,7 +78,7 @@ export default function Contact() {
                 ))}
               </ul>
               <p style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 14 }}>
-                If customers search for your service on Google, we can help you get in front of them.
+                Whatever your size or industry, if technology can help you grow, we can help you build it.
               </p>
             </div>
 
@@ -89,10 +89,10 @@ export default function Contact() {
 
             <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <a href="mailto:hello@bersk.com" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-muted)', fontSize: 15 }}>
-                <Mail size={16} style={{ color: 'var(--purple-light)' }} /> hello@bersk.com
+                <Mail size={16} style={{ color: 'var(--blue-light)' }} /> hello@bersk.com
               </a>
               <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-muted)', fontSize: 15 }}>
-                <MapPin size={16} style={{ color: 'var(--purple-light)' }} /> Las Cruces, New Mexico
+                <MapPin size={16} style={{ color: 'var(--blue-light)' }} /> Remote-first, worldwide
               </span>
             </div>
           </div>
@@ -101,18 +101,18 @@ export default function Contact() {
           <div>
             {submitted ? (
               <div className="glass-card" style={{ padding: '48px 36px', textAlign: 'center' }}>
-                <CheckCircle2 size={48} style={{ color: 'var(--purple-light)', margin: '0 auto 20px' }} />
+                <CheckCircle2 size={48} style={{ color: 'var(--blue-light)', margin: '0 auto 20px' }} />
                 <h3 style={{ fontSize: 22, fontWeight: 700, color: 'var(--white)', marginBottom: 12 }}>
                   We got your request!
                 </h3>
                 <p style={{ color: 'var(--text-muted)', lineHeight: 1.7 }}>
-                  We'll review your website and Google presence and get back to you within 24–48 hours with a clear action plan.
+                  We'll review your project and get back to you within 24–48 hours with next steps.
                 </p>
               </div>
             ) : (
               <div className="glass-card contact-form-card">
-                <div className="form-title">Request Your Free Audit</div>
-                <div className="form-sub">Fill out the form and we'll get back to you within 24–48 hours.</div>
+                <div className="form-title">Tell Us About Your Project</div>
+                <div className="form-sub">Share a few details and we'll get back to you within 24–48 hours.</div>
                 <form onSubmit={handleSubmit}>
                   <div className="form-grid">
                     <div className="form-group">
@@ -132,7 +132,7 @@ export default function Contact() {
                       />
                     </div>
                     <div className="form-group full">
-                      <label className="form-label" htmlFor="website">Website or Google Listing</label>
+                      <label className="form-label" htmlFor="website">Company Website (optional)</label>
                       <input
                         id="website" name="website" className="form-input"
                         placeholder="https://yourbusiness.com" value={form.website}
@@ -148,10 +148,10 @@ export default function Contact() {
                       />
                     </div>
                     <div className="form-group full">
-                      <label className="form-label" htmlFor="message">What are you looking for help with?</label>
+                      <label className="form-label" htmlFor="message">What would you like to build or automate?</label>
                       <textarea
                         id="message" name="message" className="form-textarea"
-                        placeholder={'Examples:\n"I need more calls from Google"\n"My website isn\'t ranking"\n"I want to show up in Google Maps"'}
+                        placeholder={'Examples:\n"I need a new website"\n"I want to automate my bookings"\n"I need a custom dashboard for my team"'}
                         value={form.message}
                         onChange={handleChange}
                         required
@@ -159,7 +159,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <button type="submit" className="btn btn-primary btn-lg form-submit" style={{ marginTop: 20 }}>
-                    Get My Free SEO Audit
+                    Request My Free Consultation
                   </button>
                   <p className="form-note">No spam. No commitments. Just a clear plan.</p>
                 </form>

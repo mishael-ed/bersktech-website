@@ -8,6 +8,7 @@ import Footer from './Footer.jsx'
 import ScrollToTop from './ScrollToTop.jsx'
 import Home from './App.jsx'
 import Services from './pages/Services.jsx'
+import CaseStudies from './pages/CaseStudies.jsx'
 import Contact from './pages/Contact.jsx'
 
 createRoot(document.getElementById('root')).render(
@@ -20,6 +21,7 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />

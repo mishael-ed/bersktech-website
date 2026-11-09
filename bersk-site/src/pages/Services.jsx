@@ -1,82 +1,83 @@
-import { Search, MapPin, Globe, TrendingUp, CheckCircle2, ChevronRight } from 'lucide-react'
+import { Globe, Code2, Bot, Workflow, CheckCircle2, ChevronRight } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 const serviceBlocks = [
   {
-    icon: <Search size={28} />,
-    eyebrow: 'Service 01',
-    title: 'Local SEO',
-    desc: 'Local SEO is how your business shows up when people search things like "plumber near me", "carpet cleaning Las Cruces", or "roof repair El Paso". We improve your rankings so your business shows up higher in Google search results and the local map pack.',
-    examples: ['"plumber near me"', '"carpet cleaning Las Cruces"', '"roof repair El Paso"'],
-    includes: [
-      'Keyword optimization for your services',
-      'On-page SEO improvements',
-      'Location targeting for local searches',
-      'Internal linking structure setup',
-      'Technical SEO cleanup (speed, indexing, structure)',
-      'Local content optimization',
-    ],
-    goal: 'Get your business showing up when people are ready to buy, not just browsing.',
-  },
-  {
-    icon: <MapPin size={28} />,
-    eyebrow: 'Service 02',
-    title: 'Google Business Profile (Google Maps Ranking)',
-    desc: 'Most local businesses lose customers here. We optimize and manage your Google Business Profile so you appear in the Google Maps "3-pack", which is where most calls come from.',
-    examples: null,
-    includes: [
-      'Full Google Business Profile optimization',
-      'Category and service setup',
-      'Keyword alignment for map rankings',
-      'Review strategy setup and guidance',
-      'Photo and post optimization',
-      'Local citation building (directory listings)',
-    ],
-    goal: 'Turn your Google Maps listing into a consistent lead generator.',
-  },
-  {
     icon: <Globe size={28} />,
-    eyebrow: 'Service 03',
-    title: 'Website Design (Built to Rank + Convert)',
-    desc: 'Most websites look fine but don\'t generate leads. We build fast, simple, and high-performing websites designed specifically to rank on Google, convert visitors into calls, and work on mobile first.',
-    examples: null,
+    eyebrow: 'Service 01',
+    title: 'Websites & Web Applications',
+    desc: 'Your website is your digital storefront. We design and build fast, secure, beautifully crafted websites and web apps, from sleek company sites to e-commerce stores and customer portals.',
+    examples: ['Company & portfolio websites', 'E-commerce stores', 'Customer portals & web apps'],
     includes: [
-      'Custom website design (no cookie-cutter templates)',
-      'Mobile-first optimization',
-      'Fast loading performance',
+      'Custom UI/UX design (no cookie-cutter templates)',
+      'Responsive, mobile-first development',
+      'Blazing-fast performance',
       'SEO-ready structure',
-      'Clear call-to-action placement',
-      'Lead-focused layout (built for calls, not just views)',
+      'CMS and admin dashboards',
+      'Hosting, security and maintenance',
     ],
-    goal: 'A website that actually brings in business instead of just existing online.',
+    goal: 'A website that represents your brand and actually drives business.',
   },
   {
-    icon: <TrendingUp size={28} />,
-    eyebrow: 'Service 04',
-    title: 'Local Lead Generation System',
-    desc: 'This is the combination of everything we do. Instead of just "doing SEO," we build a full system that helps your business consistently get discovered online.',
+    icon: <Code2 size={28} />,
+    eyebrow: 'Service 02',
+    title: 'Custom Software Systems',
+    desc: 'When off-the-shelf tools do not fit, we build software that does. Internal systems, CRMs, booking platforms, dashboards and SaaS products designed around your exact workflow.',
     examples: null,
     includes: [
-      'Local SEO setup',
-      'Google Maps optimization',
-      'Website optimization',
-      'Review growth strategy',
-      'Local authority building',
+      'CRM, ERP and internal management tools',
+      'Booking, scheduling and payment systems',
+      'Analytics dashboards and reporting',
+      'API development and third-party integrations',
+      'Mobile apps (iOS and Android)',
+      'Scalable cloud architecture',
     ],
-    goal: 'Turn your online presence into a predictable source of leads.',
+    goal: 'Software that fits your business instead of forcing you to fit it.',
+  },
+  {
+    icon: <Bot size={28} />,
+    eyebrow: 'Service 03',
+    title: 'AI Systems & Chatbots',
+    desc: 'We put AI to work for your business: intelligent assistants that answer customers, qualify leads, book appointments and support your team, available 24/7.',
+    examples: null,
+    includes: [
+      'AI appointment setters and voice agents',
+      'Customer support and website chatbots',
+      'Lead qualification and follow-up',
+      'Custom AI tools trained on your data',
+      'Document and data processing',
+      'LLM integration into your existing systems',
+    ],
+    goal: 'Give your business an always-on team member that never misses a lead.',
+  },
+  {
+    icon: <Workflow size={28} />,
+    eyebrow: 'Service 04',
+    title: 'Business Process Automation',
+    desc: 'Stop wasting hours on repetitive tasks. We connect your tools and automate the busywork, from invoicing and onboarding to reporting and customer communication.',
+    examples: null,
+    includes: [
+      'Workflow mapping and automation design',
+      'CRM, email and messaging automations',
+      'Automated reporting and notifications',
+      'Data syncing across your tools',
+      'Onboarding and document workflows',
+      'Monitoring and ongoing optimization',
+    ],
+    goal: 'Free your team to focus on work that matters while systems handle the rest.',
   },
 ]
 
 const approachSteps = [
-  { num: '01', title: 'Audit', desc: 'We review your current website, rankings, and Google presence.' },
-  { num: '02', title: 'Fix Foundations', desc: 'We optimize your website and Google Business Profile.' },
-  { num: '03', title: 'Build Visibility', desc: 'We improve rankings, build local authority, and increase visibility.' },
-  { num: '04', title: 'Generate Leads', desc: 'We focus on turning visibility into actual calls and customers.' },
+  { num: '01', title: 'Discover', desc: 'We understand your business, goals and the problems worth solving.' },
+  { num: '02', title: 'Design', desc: 'We plan the solution, scope and timeline so there are no surprises.' },
+  { num: '03', title: 'Build', desc: 'We develop, integrate and test with regular updates along the way.' },
+  { num: '04', title: 'Launch & Support', desc: 'We deploy, train your team and keep improving after go-live.' },
 ]
 
 const industries = [
-  'Carpet cleaners', 'HVAC companies', 'Plumbers', 'Roofers',
-  'Landscapers', 'Contractors', 'Home service providers',
+  'Individuals & creators', 'Founders & startups', 'Small businesses', 'Agencies',
+  'Real estate', 'Healthcare', 'E-commerce', 'Finance', 'Education', 'Enterprise teams',
 ]
 
 export default function Services() {
@@ -87,12 +88,12 @@ export default function Services() {
         <div className="container">
           <div className="section-eyebrow">Services</div>
           <h1 className="section-title">
-            Local SEO, Google Maps Ranking<br />&amp;{' '}
-            <span className="gradient-text">High-Converting Websites</span>
+            Websites, Software Systems<br />&amp;{' '}
+            <span className="gradient-text">AI Automation</span>
           </h1>
           <p className="section-body">
-            Bersk helps local service businesses get more calls, more leads, and more customers
-            by improving how they show up on Google in Las Cruces, NM and surrounding areas.
+            Bersk Technologies builds the technology businesses and individuals need to bring ideas
+            to life, operate smarter and scale with confidence.
           </p>
         </div>
       </div>
@@ -113,7 +114,7 @@ export default function Services() {
                 {s.examples && (
                   <div style={{ marginBottom: 20 }}>
                     {s.examples.map((ex) => (
-                      <div key={ex} style={{ fontSize: 14, color: 'var(--text-muted)', marginBottom: 4, paddingLeft: 12, borderLeft: '2px solid var(--border-purple)' }}>
+                      <div key={ex} style={{ fontSize: 14, color: 'var(--text-muted)', marginBottom: 4, paddingLeft: 12, borderLeft: '2px solid var(--border-blue)' }}>
                         {ex}
                       </div>
                     ))}
@@ -145,7 +146,7 @@ export default function Services() {
           <div className="section-eyebrow">Our Approach</div>
           <h2 className="section-title">Simple. Focused. Effective.</h2>
           <p className="section-body">
-            Most agencies focus on design or jargon-heavy SEO reports. We focus on one thing: getting you more customers from Google. No confusion. No fluff.
+            Our AI-powered, human-led process means no guesswork, no wasted features and no bloated timelines. We build the right thing, on time and on budget, the first time.
           </p>
           <div className="approach-grid">
             {approachSteps.map((a) => (
@@ -163,14 +164,14 @@ export default function Services() {
       <section className="section section-open">
         <div className="container">
           <div className="section-eyebrow">Who We Work With</div>
-          <h2 className="section-title">We work best with local service businesses</h2>
+          <h2 className="section-title">Businesses and individuals with ideas</h2>
           <p className="section-body">
-            If your customers are local and find you through Google, we can help you grow.
+            From a solo founder with a first idea to an established company modernizing operations, we adapt to what you need.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 32 }}>
             {industries.map((ind) => (
               <div key={ind} className="glass-card industry-chip" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 18px' }}>
-                <ChevronRight size={14} style={{ color: 'var(--purple-light)' }} />
+                <ChevronRight size={14} style={{ color: 'var(--blue-light)' }} />
                 {ind}
               </div>
             ))}
@@ -182,15 +183,15 @@ export default function Services() {
       <div className="cta-section">
         <div className="cta-glow" aria-hidden="true" />
         <div className="container cta-inner">
-          <div className="section-eyebrow">Ready to Grow?</div>
+          <div className="section-eyebrow">Ready to Build?</div>
           <h2 className="cta-title">
-            Want more visibility on Google<br />and more customers calling?
+            Have an idea, a problem<br />or a process to automate?
           </h2>
           <p className="cta-sub">
-            We'll review your website and Google presence and show you exactly what's holding you back.
+            Tell us what you're working on and we'll show you the smartest way to build it.
           </p>
           <NavLink to="/contact" className="btn btn-primary btn-xl">
-            Request a Free SEO Audit
+            Book a Free Consultation
           </NavLink>
         </div>
       </div>
