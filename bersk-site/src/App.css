@@ -808,7 +808,7 @@ img { display: block; max-width: 100%; }
 .trust-bar { overflow: hidden; }
 .trust-track {
   display: flex; width: max-content;
-  animation: marquee 38s linear infinite;
+  animation: marquee 200s linear infinite;
 }
 .trust-bar:hover .trust-track { animation-play-state: paused; }
 .trust-item { border-right: 1px solid var(--border); padding: 16px 30px; }
