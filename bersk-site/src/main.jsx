@@ -11,6 +11,7 @@ import Home from './App.jsx'
 import Services from './pages/Services.jsx'
 import CaseStudies from './pages/CaseStudies.jsx'
 import Contact from './pages/Contact.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -24,6 +25,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/services" element={<Services />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
         <Reveal />
