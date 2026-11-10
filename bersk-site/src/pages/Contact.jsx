@@ -1,30 +1,23 @@
 import { useState } from 'react'
-import { Mail, MapPin, CheckCircle2 } from 'lucide-react'
+import { Mail, ArrowRight, ArrowUpRight, ArrowLeft, CheckCircle2 } from 'lucide-react'
 
-const steps = [
-  {
-    title: 'We learn about your business',
-    desc: "We listen until we see your vision clearly, whether it's a new idea or a problem to solve.",
-  },
-  {
-    title: 'We find where tech can help',
-    desc: 'Manual processes, outdated websites, missed leads, disconnected tools. We spot the opportunities.',
-  },
-  {
-    title: 'We send you a clear proposal',
-    desc: 'No fluff. Just the solution, scope, timeline and pricing.',
-  },
+const next = [
+  { title: 'We read your brief.', desc: 'Your idea, your goals and the problem to solve.' },
+  { title: 'We talk it through.', desc: 'A short call to understand it and see if we fit.' },
+  { title: 'We define the next step.', desc: 'A clear scope, timeline and price.' },
 ]
 
-const whoWeHelp = [
-  'Individuals with an idea', 'Founders & startups', 'Small businesses',
-  'Growing companies', 'Established enterprises',
+const projectTypes = [
+  'Website or web app', 'Custom software', 'Mobile app',
+  'AI agent or chatbot', 'Automation', 'Not sure yet',
 ]
 
 export default function Contact() {
+  const [step, setStep] = useState(1)
   const [submitted, setSubmitted] = useState(false)
   const [form, setForm] = useState({
-    name: '', business: '', website: '', contact: '', message: '',
+    first: '', last: '', email: '', company: '', phone: '',
+    type: '', timeline: '', message: '',
   })
 
   function handleChange(e) {
@@ -33,139 +26,119 @@ export default function Contact() {
 
   function handleSubmit(e) {
     e.preventDefault()
+    if (step === 1) { setStep(2); return }
     setSubmitted(true)
   }
 
   return (
     <div className="contact-page">
-      {/* Header */}
-      <div className="page-header">
-        <div className="container">
-          <div className="section-eyebrow">Contact Us</div>
-          <h1 className="section-title">
-            Book a Strategy Call<br />&amp;{' '}
-            <span className="gradient-text">Project Plan</span>
-          </h1>
-          <p className="section-body">
-            Whether you're a business or an individual, tell us what you want to build or automate. We'll map out the smartest way
-            to do it and show you exactly what it takes.
-          </p>
-        </div>
-      </div>
+      <div className="container contact-shell">
+        {/* Left */}
+        <div className="contact-left">
+          <div className="contact-hero-card">
+            <div className="contact-hero-top">Bersk Technologies</div>
+            <h1 className="contact-hero-title">Great ideas start with a conversation.</h1>
+            <a href="mailto:hello@bersk.com" className="contact-hero-mail">
+              <span><Mail size={16} /> hello@bersk.com</span>
+              <ArrowUpRight size={16} />
+            </a>
+          </div>
 
-      <div className="container">
-        <div className="contact-grid">
-          {/* Left: info */}
-          <div>
-            <h2 className="section-title" style={{ fontSize: '22px' }}>What Happens When You Contact Us</h2>
-            <div className="contact-steps">
-              {steps.map((s, i) => (
-                <div key={i} className="contact-step">
-                  <div className="contact-step-num">{i + 1}</div>
-                  <div>
-                    <div className="contact-step-title">{s.title}</div>
-                    <div className="contact-step-desc">{s.desc}</div>
+          <h2 className="contact-next-title">What happens next</h2>
+          <ol className="contact-next">
+            {next.map((n, i) => (
+              <li key={n.title}>
+                <span className="contact-next-num">0{i + 1}</span>
+                <div>
+                  <div className="contact-next-head">{n.title}</div>
+                  <div className="contact-next-desc">{n.desc}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        {/* Right */}
+        <div className="contact-right">
+          {submitted ? (
+            <div className="contact-form-card contact-done">
+              <CheckCircle2 size={44} className="contact-done-icon" />
+              <h2 className="contact-form-title">Thanks, we got it.</h2>
+              <p className="contact-form-sub">We'll reply within 24–48 hours to set up your strategy call.</p>
+            </div>
+          ) : (
+            <form className="contact-form-card" onSubmit={handleSubmit}>
+              <div className="contact-form-eyebrow">Start a conversation</div>
+              <h2 className="contact-form-title">Let's talk about your project.</h2>
+              <p className="contact-form-sub">Book a strategy call and tell us what you have in mind.</p>
+
+              <div className="contact-steps-nav">
+                <span className={`csn${step === 1 ? ' active' : ' done'}`}><i>1</i> Your details</span>
+                <span className={`csn${step === 2 ? ' active' : ''}`}><i>2</i> Your project</span>
+              </div>
+
+              {step === 1 ? (
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="first">First name</label>
+                    <input id="first" name="first" className="form-input" value={form.first} onChange={handleChange} required />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="last">Last name</label>
+                    <input id="last" name="last" className="form-input" value={form.last} onChange={handleChange} required />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="email">Email</label>
+                    <input id="email" name="email" type="email" className="form-input" placeholder="you@email.com" value={form.email} onChange={handleChange} required />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="company">Company <span className="opt">(optional)</span></label>
+                    <input id="company" name="company" className="form-input" value={form.company} onChange={handleChange} />
+                  </div>
+                  <div className="form-group full">
+                    <label className="form-label" htmlFor="phone">Phone / WhatsApp <span className="opt">(optional)</span></label>
+                    <input id="phone" name="phone" className="form-input" placeholder="+1 (555) 123-4567" value={form.phone} onChange={handleChange} />
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <div className="contact-who">
-              <div className="contact-who-title">Who We Help</div>
-              <ul className="contact-who-list">
-                {whoWeHelp.map((w) => (
-                  <li key={w}>{w}</li>
-                ))}
-              </ul>
-              <p style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 14 }}>
-                Whatever your size or industry, if technology can help you grow, we can help you build it.
-              </p>
-            </div>
-
-            <div className="contact-response-note">
-              <strong style={{ color: 'var(--ink)' }}>Response Time:</strong> We usually respond within 24–48 hours.
-              If your request is urgent, mention it in the form.
-            </div>
-
-            <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <a href="mailto:hello@bersk.com" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-muted)', fontSize: 15 }}>
-                <Mail size={16} style={{ color: 'var(--blue-light)' }} /> hello@bersk.com
-              </a>
-              <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-muted)', fontSize: 15 }}>
-                <MapPin size={16} style={{ color: 'var(--blue-light)' }} /> Remote-first, worldwide
-              </span>
-            </div>
-          </div>
-
-          {/* Right: form */}
-          <div>
-            {submitted ? (
-              <div className="glass-card" style={{ padding: '48px 36px', textAlign: 'center' }}>
-                <CheckCircle2 size={48} style={{ color: 'var(--blue-light)', margin: '0 auto 20px' }} />
-                <h3 style={{ fontSize: 22, fontWeight: 700, color: 'var(--ink)', marginBottom: 12 }}>
-                  We got your request!
-                </h3>
-                <p style={{ color: 'var(--text-muted)', lineHeight: 1.7 }}>
-                  We'll review your project and get back to you within 24–48 hours with next steps.
-                </p>
-              </div>
-            ) : (
-              <div className="glass-card contact-form-card">
-                <div className="form-title">Tell Us About Your Project</div>
-                <div className="form-sub">Share a few details and we'll get back to you within 24–48 hours.</div>
-                <form onSubmit={handleSubmit}>
-                  <div className="form-grid">
-                    <div className="form-group">
-                      <label className="form-label" htmlFor="name">Name</label>
-                      <input
-                        id="name" name="name" className="form-input"
-                        placeholder="Your name" value={form.name}
-                        onChange={handleChange} required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label" htmlFor="business">Business Name</label>
-                      <input
-                        id="business" name="business" className="form-input"
-                        placeholder="Your business" value={form.business}
-                        onChange={handleChange} required
-                      />
-                    </div>
-                    <div className="form-group full">
-                      <label className="form-label" htmlFor="website">Company Website (optional)</label>
-                      <input
-                        id="website" name="website" className="form-input"
-                        placeholder="https://yourbusiness.com" value={form.website}
-                        onChange={handleChange}
-                      />
-                    </div>
-                    <div className="form-group full">
-                      <label className="form-label" htmlFor="contact">Phone or Email</label>
-                      <input
-                        id="contact" name="contact" className="form-input"
-                        placeholder="Best way to reach you" value={form.contact}
-                        onChange={handleChange} required
-                      />
-                    </div>
-                    <div className="form-group full">
-                      <label className="form-label" htmlFor="message">What would you like to build or automate?</label>
-                      <textarea
-                        id="message" name="message" className="form-textarea"
-                        placeholder={'Examples:\n"I need a new website"\n"I want to automate my bookings"\n"I need a custom dashboard for my team"'}
-                        value={form.message}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+              ) : (
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="type">What do you need?</label>
+                    <select id="type" name="type" className="form-input" value={form.type} onChange={handleChange} required>
+                      <option value="">Select one</option>
+                      {projectTypes.map((t) => <option key={t}>{t}</option>)}
+                    </select>
                   </div>
-                  <button type="submit" className="btn btn-primary btn-lg form-submit" style={{ marginTop: 20 }}>
-                    Book My Strategy Call
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="timeline">Timeline</label>
+                    <select id="timeline" name="timeline" className="form-input" value={form.timeline} onChange={handleChange}>
+                      <option value="">Select one</option>
+                      <option>As soon as possible</option>
+                      <option>1–3 months</option>
+                      <option>3+ months</option>
+                      <option>Just exploring</option>
+                    </select>
+                  </div>
+                  <div className="form-group full">
+                    <label className="form-label" htmlFor="message">Tell us about your idea</label>
+                    <textarea id="message" name="message" className="form-textarea" value={form.message} onChange={handleChange} required />
+                  </div>
+                </div>
+              )}
+
+              <div className="contact-form-actions">
+                {step === 2 ? (
+                  <button type="button" className="btn btn-ghost btn-lg" onClick={() => setStep(1)}>
+                    <ArrowLeft size={16} /> Back
                   </button>
-                  <p className="form-note">No spam. No commitments. Just a clear plan.</p>
-                </form>
+                ) : <span />}
+                <button type="submit" className="btn btn-primary btn-lg">
+                  {step === 1 ? 'Continue' : 'Book my strategy call'} <ArrowRight size={16} />
+                </button>
               </div>
-            )}
-          </div>
+              <p className="form-note">No spam. We only use your details to reply to you.</p>
+            </form>
+          )}
         </div>
       </div>
     </div>

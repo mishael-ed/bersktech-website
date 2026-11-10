@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <NavLink to="/">
-              <img src="/logos/logo-blue-dark.png" alt="Bersk" className="footer-logo" />
+              <img src="/logos/logo-blue.png" alt="Bersk" className="footer-logo" />
             </NavLink>
             <p className="footer-desc">
               Websites, software systems and AI automation for businesses and individuals, built to bring your ideas to life.

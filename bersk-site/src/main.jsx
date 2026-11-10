@@ -5,6 +5,7 @@ import './index.css'
 import Background from './Background.jsx'
 import Nav from './Nav.jsx'
 import Footer from './Footer.jsx'
+import Reveal from './Reveal.jsx'
 import ScrollToTop from './ScrollToTop.jsx'
 import Home from './App.jsx'
 import Services from './pages/Services.jsx'
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
+        <Reveal />
       </div>
     </BrowserRouter>
   </StrictMode>,

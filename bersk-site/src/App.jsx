@@ -123,20 +123,21 @@ export default function Home() {
 
       {/* ── TRUST BAR ── */}
       <div className="trust-bar">
-        <div className="container trust-inner">
-          {[
+        <div className="trust-track">
+          {[...Array(2)].flatMap((_, rep) => [
             { icon: <Globe size={14} />, text: 'Websites' },
             { icon: <Code2 size={14} />, text: 'Custom Software' },
             { icon: <Bot size={14} />, text: 'AI Automation' },
             { icon: <Cloud size={14} />, text: 'Cloud & Integrations' },
             { icon: <Zap size={14} />, text: 'Fast Delivery' },
             { icon: <Shield size={14} />, text: 'Secure & Reliable' },
+            { icon: <Layers size={14} />, text: 'Scalable Architecture' },
           ].map((item, i) => (
-            <span key={i} className="trust-item">
+            <span key={`${rep}-${i}`} className="trust-item" aria-hidden={rep === 1}>
               <span className="trust-icon">{item.icon}</span>
               {item.text}
             </span>
-          ))}
+          )))}
         </div>
       </div>
 
