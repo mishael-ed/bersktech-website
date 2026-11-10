@@ -77,7 +77,7 @@ export default function CaseStudies() {
             Business or individual, big or small. Tell us what you have in mind.
           </p>
           <NavLink to="/contact" className="btn btn-primary btn-xl">
-            Start Your Project <ArrowUpRight size={18} />
+            Book a Strategy Call <ArrowUpRight size={18} />
           </NavLink>
         </div>
       </div>

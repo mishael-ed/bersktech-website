@@ -43,7 +43,7 @@ export default function Contact() {
         <div className="container">
           <div className="section-eyebrow">Contact Us</div>
           <h1 className="section-title">
-            Book a Free Consultation<br />&amp;{' '}
+            Book a Strategy Call<br />&amp;{' '}
             <span className="gradient-text">Project Plan</span>
           </h1>
           <p className="section-body">
@@ -83,7 +83,7 @@ export default function Contact() {
             </div>
 
             <div className="contact-response-note">
-              <strong style={{ color: 'var(--white)' }}>Response Time:</strong> We usually respond within 24–48 hours.
+              <strong style={{ color: 'var(--ink)' }}>Response Time:</strong> We usually respond within 24–48 hours.
               If your request is urgent, mention it in the form.
             </div>
 
@@ -102,7 +102,7 @@ export default function Contact() {
             {submitted ? (
               <div className="glass-card" style={{ padding: '48px 36px', textAlign: 'center' }}>
                 <CheckCircle2 size={48} style={{ color: 'var(--blue-light)', margin: '0 auto 20px' }} />
-                <h3 style={{ fontSize: 22, fontWeight: 700, color: 'var(--white)', marginBottom: 12 }}>
+                <h3 style={{ fontSize: 22, fontWeight: 700, color: 'var(--ink)', marginBottom: 12 }}>
                   We got your request!
                 </h3>
                 <p style={{ color: 'var(--text-muted)', lineHeight: 1.7 }}>
@@ -159,7 +159,7 @@ export default function Contact() {
                     </div>
                   </div>
                   <button type="submit" className="btn btn-primary btn-lg form-submit" style={{ marginTop: 20 }}>
-                    Request My Free Consultation
+                    Book My Strategy Call
                   </button>
                   <p className="form-note">No spam. No commitments. Just a clear plan.</p>
                 </form>

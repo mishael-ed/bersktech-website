@@ -191,7 +191,7 @@ export default function Services() {
             Tell us what you're working on and we'll show you the smartest way to build it.
           </p>
           <NavLink to="/contact" className="btn btn-primary btn-xl">
-            Book a Free Consultation
+            Book a Strategy Call
           </NavLink>
         </div>
       </div>

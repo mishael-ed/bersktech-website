@@ -38,7 +38,7 @@ export default function Nav() {
       <nav ref={navRef} className="nav">
         <div className="container nav-inner">
           <NavLink to="/" onClick={close}>
-            <img src="/logos/logo-blue.png" alt="Bersk" className="nav-logo" />
+            <img src="/logos/logo-blue-dark.png" alt="Bersk" className="nav-logo" />
           </NavLink>
 
           <div className="nav-links">

@@ -115,7 +115,7 @@ export default function Home() {
             on budget, and get it right the first time.
           </p>
           <div className="hero-ctas">
-            <NavLink to="/contact" className="btn btn-primary btn-lg">Book a Free Consultation</NavLink>
+            <NavLink to="/contact" className="btn btn-primary btn-lg">Book a Strategy Call</NavLink>
             <a href="#how" className="btn btn-ghost btn-lg">See How It Works <ChevronRight size={15} /></a>
           </div>
         </div>
@@ -253,7 +253,7 @@ export default function Home() {
               <p className="section-body">
                 Whether you're a company upgrading operations or an individual with an idea, we can build it.
               </p>
-              <NavLink to="/contact" className="btn btn-primary btn-lg">Start a Project</NavLink>
+              <NavLink to="/contact" className="btn btn-primary btn-lg">Book a Demo</NavLink>
             </div>
             <div className="who-right">
               <div className="industries-grid">
@@ -321,7 +321,7 @@ export default function Home() {
             See our AI-powered, human-led process and let us help you launch on time and under budget, the right way, the first time.
           </p>
           <NavLink to="/contact" className="btn btn-primary btn-xl">
-            <Mail size={18} /> Start Your Project
+            <Mail size={18} /> Book a Strategy Call
           </NavLink>
         </div>
       </section>
