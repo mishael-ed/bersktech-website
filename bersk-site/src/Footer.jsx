@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { Mail, MapPin } from 'lucide-react'
+import { MapPin } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -33,7 +33,6 @@ export default function Footer() {
           <div className="footer-col">
             <div className="footer-col-head">Contact</div>
             <ul>
-              <li><a href="mailto:hello@bersk.com"><Mail size={13} /> hello@bersk.com</a></li>
               <li><span><MapPin size={13} /> Remote-first, worldwide</span></li>
             </ul>
           </div>

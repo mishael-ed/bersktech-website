@@ -916,7 +916,7 @@ img { display: block; max-width: 100%; }
 .contact-hero-top { font-size: 13px; color: rgba(255,255,255,0.75); }
 .contact-hero-title {
   font-size: clamp(30px, 3.6vw, 42px); font-weight: 700; line-height: 1.12;
-  letter-spacing: -0.02em; margin: 22px 0 auto; padding-bottom: 28px; color: #fff;
+  letter-spacing: -0.02em; margin: 22px 0 auto; padding-bottom: 24px; color: #fff;
 }
 .contact-hero-mail {
   display: flex; align-items: center; justify-content: space-between;
@@ -1074,3 +1074,7 @@ img { display: block; max-width: 100%; }
   }
   .who-section .btn-primary:hover { background: #e8eeff; border-color: #e8eeff; }
 }
+
+.form-error { margin-top: 14px; font-size: 14px; color: #c62828; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.contact-hero-mark { height: 120px; width: auto; margin-top: auto; align-self: flex-start; }

@@ -1,11 +1,14 @@
 import { useState } from 'react'
-import { Mail, ArrowRight, ArrowUpRight, ArrowLeft, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react'
 
 const next = [
   { title: 'We read your brief.', desc: 'Your idea, your goals and the problem to solve.' },
   { title: 'We talk it through.', desc: 'A short call to understand it and see if we fit.' },
   { title: 'We define the next step.', desc: 'A clear scope, timeline and price.' },
 ]
+
+// Form messages are delivered to this inbox via FormSubmit (formsubmit.co).
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/mishaeledegwa@gmail.com'
 
 const projectTypes = [
   'Website or web app', 'Custom software', 'Mobile app',
@@ -15,6 +18,8 @@ const projectTypes = [
 export default function Contact() {
   const [step, setStep] = useState(1)
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
   const [form, setForm] = useState({
     first: '', last: '', email: '', company: '', phone: '',
     type: '', timeline: '', message: '',
@@ -24,10 +29,37 @@ export default function Contact() {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     if (step === 1) { setStep(2); return }
-    setSubmitted(true)
+    setSending(true)
+    setError('')
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: `New Bersk enquiry from ${form.first} ${form.last}`,
+          _template: 'table',
+          _replyto: form.email,
+          _honey: '',
+          Name: `${form.first} ${form.last}`,
+          Email: form.email,
+          Company: form.company || '-',
+          Phone: form.phone || '-',
+          'Project type': form.type,
+          Timeline: form.timeline || '-',
+          Message: form.message,
+        }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok || data.success === 'false' || data.success === false) throw new Error('failed')
+      setSubmitted(true)
+    } catch {
+      setError('Something went wrong sending that. Please try again in a moment.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -38,10 +70,7 @@ export default function Contact() {
           <div className="contact-hero-card">
             <div className="contact-hero-top">Bersk Technologies</div>
             <h1 className="contact-hero-title">Great ideas start with a conversation.</h1>
-            <a href="mailto:hello@bersk.com" className="contact-hero-mail">
-              <span><Mail size={16} /> hello@bersk.com</span>
-              <ArrowUpRight size={16} />
-            </a>
+            <img src="/logos/mark-white.png" alt="" className="contact-hero-mark" />
           </div>
 
           <h2 className="contact-next-title">What happens next</h2>
@@ -132,10 +161,11 @@ export default function Contact() {
                     <ArrowLeft size={16} /> Back
                   </button>
                 ) : <span />}
-                <button type="submit" className="btn btn-primary btn-lg">
-                  {step === 1 ? 'Continue' : 'Book my strategy call'} <ArrowRight size={16} />
+                <button type="submit" className="btn btn-primary btn-lg" disabled={sending}>
+                  {step === 1 ? 'Continue' : sending ? 'Sending...' : 'Book my strategy call'} <ArrowRight size={16} />
                 </button>
               </div>
+              {error && <p className="form-error" role="alert">{error}</p>}
               <p className="form-note">No spam. We only use your details to reply to you.</p>
             </form>
           )}
