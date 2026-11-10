@@ -70,7 +70,7 @@ export default function Contact() {
           <div className="contact-hero-card">
             <div className="contact-hero-top">Bersk Technologies</div>
             <h1 className="contact-hero-title">Great ideas start with a conversation.</h1>
-            <img src="/logos/mark-white.png" alt="" className="contact-hero-mark" />
+            <img src="/logos/mark-white.webp" alt="" className="contact-hero-mark" width="47" height="64" decoding="async" />
           </div>
 
           <h2 className="contact-next-title">What happens next</h2>

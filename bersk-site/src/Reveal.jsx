@@ -9,6 +9,7 @@ const SELECTOR = [
 ].join(',')
 
 // Adds a staggered fade-up reveal to common elements as they scroll into view.
+// Works with lazy-loaded pages: new DOM is picked up by a MutationObserver.
 export default function Reveal() {
   const { pathname } = useLocation()
 
@@ -16,10 +17,7 @@ export default function Reveal() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     if (!('IntersectionObserver' in window)) return
 
-    const els = Array.from(document.querySelectorAll(SELECTOR))
-    const counters = new Map()
     const timers = []
-
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -33,17 +31,32 @@ export default function Reveal() {
       { threshold: 0.12, rootMargin: '0px 0px -6% 0px' },
     )
 
-    els.forEach((el) => {
-      const parent = el.parentElement
-      const n = counters.get(parent) || 0
-      counters.set(parent, n + 1)
-      el.style.setProperty('--d', `${Math.min(n, 5) * 80}ms`)
-      el.classList.add('reveal')
-      io.observe(el)
+    const counters = new Map()
+    function scan() {
+      document.querySelectorAll(SELECTOR).forEach((el) => {
+        if (el.dataset.rv) return
+        el.dataset.rv = '1'
+        const parent = el.parentElement
+        const n = counters.get(parent) || 0
+        counters.set(parent, n + 1)
+        el.style.setProperty('--d', `${Math.min(n, 5) * 80}ms`)
+        el.classList.add('reveal')
+        io.observe(el)
+      })
+    }
+
+    scan()
+    let raf = 0
+    const mo = new MutationObserver(() => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(scan)
     })
+    mo.observe(document.getElementById('root'), { childList: true, subtree: true })
 
     return () => {
       io.disconnect()
+      mo.disconnect()
+      cancelAnimationFrame(raf)
       timers.forEach(clearTimeout)
     }
   }, [pathname])

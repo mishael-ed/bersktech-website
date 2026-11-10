@@ -1,17 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import Background from './Background.jsx'
 import Nav from './Nav.jsx'
 import Footer from './Footer.jsx'
 import Reveal from './Reveal.jsx'
 import ScrollToTop from './ScrollToTop.jsx'
-import Home from './App.jsx'
-import Services from './pages/Services.jsx'
-import CaseStudies from './pages/CaseStudies.jsx'
-import Contact from './pages/Contact.jsx'
-import NotFound from './pages/NotFound.jsx'
+import AppRoutes from './AppRoutes.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -20,13 +16,7 @@ createRoot(document.getElementById('root')).render(
         <Background />
         <ScrollToTop />
         <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/case-studies" element={<CaseStudies />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppRoutes />
         <Footer />
         <Reveal />
       </div>

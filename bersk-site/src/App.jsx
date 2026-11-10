@@ -95,7 +95,7 @@ export default function Home() {
       <section className="hero">
         <div
           className="hero-bg"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1600&q=80&auto=format)' }}
+          style={{ backgroundImage: 'url(/hero.webp)' }}
           aria-hidden="true"
         />
         <div className="hero-overlay" aria-hidden="true" />

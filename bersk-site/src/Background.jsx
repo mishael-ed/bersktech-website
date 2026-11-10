@@ -1,4 +1,4 @@
-const PARTICLES = Array.from({ length: 40 }, (_, i) => ({
+const PARTICLES = Array.from({ length: 16 }, (_, i) => ({
   id: i,
   x: (i * 37 + 11) % 100,
   y: (i * 53 + 7) % 100,
