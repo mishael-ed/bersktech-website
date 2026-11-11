@@ -1,14 +1,12 @@
 import { useState } from 'react'
 import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react'
+import { submitLead } from '../lib/leads.js'
 
 const next = [
   { title: 'We read your brief.', desc: 'Your idea, your goals and the problem to solve.' },
   { title: 'We talk it through.', desc: 'A short call to understand it and see if we fit.' },
   { title: 'We define the next step.', desc: 'A clear scope, timeline and price.' },
 ]
-
-// Form messages are delivered to this inbox via FormSubmit (formsubmit.co).
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/mishaeledegwa@gmail.com'
 
 const projectTypes = [
   'Website or web app', 'Custom software', 'Mobile app',
@@ -35,25 +33,19 @@ export default function Contact() {
     setSending(true)
     setError('')
     try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          _subject: `New Bersk enquiry from ${form.first} ${form.last}`,
-          _template: 'table',
-          _replyto: form.email,
-          _honey: '',
-          Name: `${form.first} ${form.last}`,
-          Email: form.email,
-          Company: form.company || '-',
-          Phone: form.phone || '-',
-          'Project type': form.type,
-          Timeline: form.timeline || '-',
-          Message: form.message,
-        }),
-      })
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok || data.success === 'false' || data.success === false) throw new Error('failed')
+      await submitLead(
+        {
+          name: `${form.first} ${form.last}`,
+          email: form.email,
+          company: form.company,
+          phone: form.phone,
+          wants_built: form.type,
+          start: form.timeline,
+          message: form.message,
+          source: 'Main site contact form',
+        },
+        { subject: `New Bersk enquiry from ${form.first} ${form.last}` },
+      )
       setSubmitted(true)
     } catch {
       setError('Something went wrong sending that. Please try again in a moment.')

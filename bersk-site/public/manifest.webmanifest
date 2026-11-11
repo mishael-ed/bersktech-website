@@ -1,0 +1,13 @@
+{
+  "name": "Bersk Technologies",
+  "short_name": "Bersk",
+  "description": "Websites, apps and AI automation for businesses and individuals.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

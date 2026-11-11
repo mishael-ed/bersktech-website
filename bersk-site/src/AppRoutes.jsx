@@ -4,20 +4,26 @@ import Home from './App.jsx'
 
 // Home loads with the main bundle; other pages load on demand (and are
 // prefetched when the browser is idle, see below).
-const importServices = () => import('./pages/Services.jsx')
-const importCaseStudies = () => import('./pages/CaseStudies.jsx')
-const importContact = () => import('./pages/Contact.jsx')
+import {
+  importServices, importCaseStudies, importAbout, importContact, importNotFound,
+} from './route-loaders.js'
+
 const Services = lazy(importServices)
 const CaseStudies = lazy(importCaseStudies)
+const About = lazy(importAbout)
 const Contact = lazy(importContact)
-const NotFound = lazy(() => import('./pages/NotFound.jsx'))
+const NotFound = lazy(importNotFound)
 
-const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500))
-idle(() => {
-  importServices()
-  importCaseStudies()
-  importContact()
-})
+// warm the other pages while the browser is idle so navigation feels instant
+if (typeof window !== 'undefined') {
+  const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500))
+  idle(() => {
+    importServices()
+    importCaseStudies()
+    importAbout()
+    importContact()
+  })
+}
 
 export default function AppRoutes() {
   return (
@@ -26,6 +32,7 @@ export default function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
         <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 
 const SELECTOR = [
   '.section-eyebrow', '.section-title', '.section-body',
-  '.glass-card', '.check-item', '.service-block', '.includes-list li',
+  '.glass-card', '.showcase-frame', '.about-hero', '.about-teaser-media', '.about-body > *', '.check-item', '.service-block', '.includes-list li',
   '.contact-step', '.contact-who', '.contact-response-note',
   '.cta-title', '.cta-sub', '.cta-inner > .btn', '.local-cta-note', '.problem-note',
 ].join(',')
@@ -32,10 +32,12 @@ export default function Reveal() {
     )
 
     const counters = new Map()
+    const seen = new WeakSet() // per effect run, so React StrictMode's second run re-observes everything
     function scan() {
       document.querySelectorAll(SELECTOR).forEach((el) => {
-        if (el.dataset.rv) return
-        el.dataset.rv = '1'
+        if (seen.has(el)) return
+        seen.add(el)
+        if (el.classList.contains('in')) return
         const parent = el.parentElement
         const n = counters.get(parent) || 0
         counters.set(parent, n + 1)

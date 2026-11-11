@@ -5,6 +5,8 @@ import {
   UserX, MessageSquareOff, Wallet, Compass,
 } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
+import Testimonials from './Testimonials.jsx'
+import AboutTeaser from './AboutTeaser.jsx'
 
 const services = [
   {
@@ -144,15 +146,29 @@ export default function Home() {
       {/* ── THE PROBLEM ── */}
       <section className="section section-solid problem-section">
         <div className="container">
-          <div className="section-eyebrow">Sound Familiar?</div>
-          <h2 className="section-title">
-            Got an idea for an app or software,{' '}
-            <span className="gradient-text">but you don't know how to code?</span>
-          </h2>
-          <p className="section-body">
-            You're not alone. Most great ideas never launch, not because they're bad, but because
-            building them without a proven system is risky, slow and expensive.
-          </p>
+          <div className="problem-top">
+            <div className="problem-copy">
+              <div className="section-eyebrow">Sound Familiar?</div>
+              <h2 className="section-title">
+                Got an idea for an app or software,{' '}
+                <span className="gradient-text">but you don't know how to code?</span>
+              </h2>
+              <p className="section-body">
+                You're not alone. Most great ideas never launch, not because they're bad, but because
+                building them without a proven system is risky, slow and expensive.
+              </p>
+            </div>
+            <div className="showcase-frame problem-media">
+              <img
+                src="/billboard-1400.webp"
+                srcSet="/billboard-800.webp 800w, /billboard-1400.webp 1400w"
+                sizes="(max-width: 900px) 92vw, 520px"
+                width="1400" height="1045"
+                alt="A Bersk billboard reading: Tech solutions tailored for you."
+                loading="lazy" decoding="async"
+              />
+            </div>
+          </div>
           <div className="services-grid problem-grid">
             {problems.map((p) => (
               <div key={p.title} className="glass-card service-card">
@@ -168,6 +184,12 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* ── TESTIMONIALS ── */}
+      <Testimonials />
+
+      {/* ── ABOUT (snippet, full page at /about) ── */}
+      <AboutTeaser />
 
       {/* ── WHAT WE DO ── */}
       <section className="section section-open" id="services">

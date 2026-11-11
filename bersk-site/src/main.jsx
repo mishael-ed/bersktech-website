@@ -1,25 +1,27 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
-import Background from './Background.jsx'
-import Nav from './Nav.jsx'
-import Footer from './Footer.jsx'
-import Reveal from './Reveal.jsx'
-import ScrollToTop from './ScrollToTop.jsx'
-import AppRoutes from './AppRoutes.jsx'
+import './App.css'
+import Site from './Site.jsx'
+import { preloadFor } from './route-loaders.js'
 
-createRoot(document.getElementById('root')).render(
+const root = document.getElementById('root')
+const app = (
   <StrictMode>
     <BrowserRouter>
-      <div className="site">
-        <Background />
-        <ScrollToTop />
-        <Nav />
-        <AppRoutes />
-        <Footer />
-        <Reveal />
-      </div>
+      <Site />
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 )
+
+// Pages are pre-built with their content already in the HTML: attach to it.
+// (The /booking pages and the dev server start empty and render normally.)
+if (root.hasChildNodes()) {
+  // load this page's code first so React can attach to the existing HTML cleanly
+  preloadFor(window.location.pathname)
+    .catch(() => {})
+    .then(() => hydrateRoot(root, app))
+} else {
+  createRoot(root).render(app)
+}
