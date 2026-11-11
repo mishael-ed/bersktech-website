@@ -12,7 +12,7 @@ const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
 fs.writeFileSync(path.join(dist, 'shell.html'), template)
 
 const server = await import(pathToFileURL(path.resolve('dist-server/entry-server.js')).href)
-const { render, headTags, PAGES, canonicalFor } = server
+const { render, headTags, canonicalFor, ALL_ROUTES, lastmodFor, POSTS } = server
 
 function build(url, { notFound = false } = {}) {
   return render(url).then((body) => {
@@ -25,7 +25,7 @@ function build(url, { notFound = false } = {}) {
   })
 }
 
-const routes = Object.keys(PAGES)
+const routes = ALL_ROUTES
 for (const route of routes) {
   const html = await build(route)
   const out = route === '/' ? path.join(dist, 'index.html') : path.join(dist, route.slice(1), 'index.html')
@@ -39,14 +39,20 @@ fs.writeFileSync(path.join(dist, '404.html'), await build('/__404__', { notFound
 console.log('prerendered 404')
 
 // sitemap
-const today = new Date().toISOString().slice(0, 10)
 const urls = routes
-  .map((r) => `  <url>\n    <loc>${canonicalFor(r)}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`)
+  .map((r) => `  <url>\n    <loc>${canonicalFor(r)}</loc>\n    <lastmod>${lastmodFor(r)}</lastmod>\n  </url>`)
   .join('\n')
 fs.writeFileSync(
   path.join(dist, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
 )
 console.log('wrote sitemap.xml with', routes.length, 'pages')
+
+// add the guides to llms.txt so AI assistants can find them
+const llmsPath = path.join(dist, 'llms.txt')
+if (fs.existsSync(llmsPath)) {
+  const guides = POSTS.map((p) => `- [${p.title}](${canonicalFor('/blog/' + p.slug)}): ${p.description}`).join('\n')
+  fs.appendFileSync(llmsPath, `\n## Guides\n- [Blog](${canonicalFor('/blog')}): all guides\n${guides}\n`)
+}
 
 fs.rmSync(path.resolve('dist-server'), { recursive: true, force: true })

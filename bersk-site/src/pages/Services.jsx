@@ -93,8 +93,9 @@ export default function Services() {
             <span className="gradient-text">AI Automation</span>
           </h1>
           <p className="section-body">
-            Bersk Technologies builds the technology businesses and individuals need to bring ideas
-            to life, operate smarter and scale with confidence.
+            Bersk Technologies is a software development company in Lagos, Nigeria. We build the
+            technology businesses and individuals need to bring ideas to life, operate smarter and
+            scale with confidence.
           </p>
         </div>
       </div>

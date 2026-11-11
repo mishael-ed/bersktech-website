@@ -1,10 +1,18 @@
 # Bersk Technologies
 
-> Bersk Technologies builds websites, web apps, mobile apps, online stores, custom software and AI automation for businesses and individuals in Nigeria, the United States and online worldwide.
+> Bersk Technologies is a software development company based in Lagos, Nigeria. We build custom software, websites, web apps, mobile apps, online stores, AI chatbots and business automation for businesses and individuals in Nigeria, the United States and online worldwide.
+
+## Key facts
+- Company: Bersk Technologies (also called Bersk)
+- Based in: Lagos, Nigeria
+- Founder and CEO: Ed Mishael
+- Services: custom software, websites and web apps, mobile apps (iOS and Android), online stores, AI chatbots and appointment setters, business process automation
+- Clients: businesses and individuals in Nigeria and the United States, including Galuxe (online store, Nigeria) and Aggie Carpet Cleaning (United States)
+- How to start: book a strategy call at https://www.bersk.tech/contact
 
 ## Pages
 - [Home](https://www.bersk.tech/): what Bersk does and how the process works
-- [Services](https://www.bersk.tech/services): websites, custom software, AI systems and chatbots, business automation, plus FAQs
+- [Services](https://www.bersk.tech/services): software, websites, AI systems and automation, plus FAQs
 - [About](https://www.bersk.tech/about): the Lagos-based team behind Bersk and how it works with clients
 - [Case Studies](https://www.bersk.tech/case-studies): Galuxe, an online store for Nigerian shoppers
 - [Contact](https://www.bersk.tech/contact): book a strategy call

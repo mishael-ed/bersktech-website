@@ -2,6 +2,14 @@
 // and also published as FAQ structured data for search engines.
 export const FAQS = [
   {
+    q: 'Where is Bersk Technologies based?',
+    a: 'Bersk Technologies is a software development company based in Lagos, Nigeria. We work with businesses and individuals in Nigeria, the United States and online worldwide.',
+  },
+  {
+    q: 'Does Bersk build custom software, websites and mobile apps in Lagos?',
+    a: 'Yes. Our Lagos-based team of developers and engineers builds custom software, websites, online stores, mobile apps for iPhone and Android, AI chatbots and business automation.',
+  },
+  {
     q: 'Do I need to know how to code to work with Bersk?',
     a: 'No. You bring the idea and we handle the technical side. We explain everything in plain words and you approve each stage before we move on.',
   },

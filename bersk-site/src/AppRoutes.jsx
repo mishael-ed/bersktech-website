@@ -5,12 +5,14 @@ import Home from './App.jsx'
 // Home loads with the main bundle; other pages load on demand (and are
 // prefetched when the browser is idle, see below).
 import {
-  importServices, importCaseStudies, importAbout, importContact, importNotFound,
+  importServices, importCaseStudies, importAbout, importBlog, importBlogPost, importContact, importNotFound,
 } from './route-loaders.js'
 
 const Services = lazy(importServices)
 const CaseStudies = lazy(importCaseStudies)
 const About = lazy(importAbout)
+const Blog = lazy(importBlog)
+const BlogPost = lazy(importBlogPost)
 const Contact = lazy(importContact)
 const NotFound = lazy(importNotFound)
 
@@ -21,6 +23,7 @@ if (typeof window !== 'undefined') {
     importServices()
     importCaseStudies()
     importAbout()
+    importBlog()
     importContact()
   })
 }
@@ -33,6 +36,8 @@ export default function AppRoutes() {
         <Route path="/services" element={<Services />} />
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

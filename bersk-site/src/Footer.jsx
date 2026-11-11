@@ -12,7 +12,7 @@ export default function Footer() {
               <img src="/logos/logo-white.webp" alt="Bersk Technologies" className="footer-logo" width="140" height="48" loading="lazy" decoding="async" />
             </NavLink>
             <p className="footer-desc">
-              Websites, software systems and AI automation for businesses and individuals, built to bring your ideas to life.
+              A software development company in Lagos, Nigeria. Websites, software systems and AI automation for businesses and individuals, built to bring your ideas to life.
             </p>
             <div className="footer-social">
               <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer me" aria-label="Bersk Technologies on Instagram">
@@ -41,6 +41,7 @@ export default function Footer() {
             <div className="footer-col-head">Company</div>
             <ul>
               <li><NavLink to="/about">About</NavLink></li>
+              <li><NavLink to="/blog">Blog</NavLink></li>
               <li><NavLink to="/case-studies">Case Studies</NavLink></li>
               <li><NavLink to="/#how">How It Works</NavLink></li>
               <li><NavLink to="/contact">Book a Strategy Call</NavLink></li>
@@ -49,7 +50,7 @@ export default function Footer() {
           <div className="footer-col">
             <div className="footer-col-head">Contact</div>
             <ul>
-              <li><span><MapPin size={13} /> Remote-first, worldwide</span></li>
+              <li><span><MapPin size={13} /> Lagos, Nigeria · Serving clients worldwide</span></li>
             </ul>
           </div>
         </div>

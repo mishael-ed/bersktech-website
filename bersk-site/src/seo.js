@@ -1,5 +1,6 @@
 import { FAQS } from './faqs.js'
 import { SOCIAL } from './social.js'
+import { POSTS, findPost, wordCount } from './blog/posts.js'
 
 // ─────────────────────────────────────────────────────────────
 // One place for every page's search-engine and social-share details.
@@ -25,15 +26,15 @@ const SERVICES = [
 
 export const PAGES = {
   '/': {
-    title: 'Bersk Technologies | Websites, Apps & AI Automation',
+    title: 'Software Development Company in Lagos, Nigeria | Bersk',
     description:
-      'Turn your idea into a real website, app or online store. Bersk Technologies builds custom software and AI automation for businesses and individuals.',
+      'Bersk Technologies is a Lagos-based software development company building custom software, websites, mobile apps and AI automation for businesses worldwide.',
     crumb: 'Home',
   },
   '/services': {
-    title: 'Web, Software & AI Automation Services | Bersk',
+    title: 'Software, Web & AI Development Services in Lagos | Bersk',
     description:
-      'Custom websites, web apps, mobile apps, AI chatbots and business automation, built around your idea and approved by you at every stage.',
+      'Custom software, websites, mobile apps, AI chatbots and automation from a Lagos, Nigeria team. You approve every stage, with a clear scope and price.',
     crumb: 'Services',
   },
   '/case-studies': {
@@ -41,6 +42,12 @@ export const PAGES = {
     description:
       'See what Bersk Technologies has built, including Galuxe, an online store for Nigerian shoppers with pay on delivery and order tracking.',
     crumb: 'Case Studies',
+  },
+  '/blog': {
+    title: 'Blog: Guides for Building Software | Bersk',
+    description:
+      'Plain-words guides from a Lagos software team: how to choose a developer, what an app costs in Nigeria, and what to build first.',
+    crumb: 'Blog',
   },
   '/about': {
     title: 'About Bersk Technologies | Software Team in Lagos',
@@ -62,9 +69,29 @@ export const NOT_FOUND = {
   noindex: true,
 }
 
+const cleanPath = (pathname) => (pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname)
+
+function postFor(clean) {
+  const m = clean.match(/^\/blog\/([^/]+)$/)
+  return m ? findPost(m[1]) : undefined
+}
+
 export function pageFor(pathname) {
-  const clean = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname
-  return PAGES[clean] ? { ...PAGES[clean], path: clean } : { ...NOT_FOUND, path: clean }
+  const clean = cleanPath(pathname)
+  if (PAGES[clean]) return { ...PAGES[clean], path: clean }
+  const post = postFor(clean)
+  if (post) {
+    return { title: post.seoTitle, description: post.description, crumb: post.title, path: clean, post }
+  }
+  return { ...NOT_FOUND, path: clean }
+}
+
+// every page that should be pre-built and listed in the sitemap
+export const ALL_ROUTES = [...Object.keys(PAGES), ...POSTS.map((p) => `/blog/${p.slug}`)]
+
+export function lastmodFor(route) {
+  const post = postFor(route)
+  return post ? post.date : new Date().toISOString().slice(0, 10)
 }
 
 export const canonicalFor = (path) => (path === '/' ? `${SITE.url}/` : `${SITE.url}${path}`)
@@ -83,11 +110,17 @@ const organization = () => ({
   description: PAGES['/'].description,
   slogan: 'Tech solutions tailored for you.',
   sameAs: [SOCIAL.instagram, SOCIAL.facebook],
-  address: { '@type': 'PostalAddress', addressLocality: 'Lagos', addressCountry: 'NG' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Lagos', addressRegion: 'Lagos State', addressCountry: 'NG' },
   founder: { '@type': 'Person', name: 'Ed Mishael', jobTitle: 'CEO and Founder' },
-  areaServed: ['Nigeria', 'United States', 'Worldwide'],
+  areaServed: [
+    { '@type': 'City', name: 'Lagos' },
+    { '@type': 'Country', name: 'Nigeria' },
+    { '@type': 'Country', name: 'United States' },
+    'Worldwide',
+  ],
+  knowsLanguage: 'en',
   knowsAbout: [
-    'Website development', 'Custom software development', 'Mobile app development',
+    'Software development in Lagos, Nigeria', 'Website development', 'Custom software development', 'Mobile app development',
     'E-commerce development', 'AI chatbots', 'Business process automation',
   ],
   hasOfferCatalog: {
@@ -109,16 +142,23 @@ const website = () => ({
   publisher: { '@id': orgId },
 })
 
-const breadcrumb = (path) => ({
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE.url}/` },
-    { '@type': 'ListItem', position: 2, name: PAGES[path].crumb, item: canonicalFor(path) },
-  ],
-})
+const breadcrumb = (path) => {
+  const post = postFor(path)
+  const items = [{ name: 'Home', item: `${SITE.url}/` }]
+  if (post) {
+    items.push({ name: 'Blog', item: canonicalFor('/blog') }, { name: post.title, item: canonicalFor(path) })
+  } else {
+    items.push({ name: PAGES[path].crumb, item: canonicalFor(path) })
+  }
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, ...it })),
+  }
+}
 
 export function jsonLdFor(path) {
-  const page = PAGES[path]
+  const post = postFor(path)
+  const page = PAGES[path] || (post && { title: post.seoTitle, description: post.description })
   if (!page) return null
   const graph = [organization(), website()]
   const webPage = (type) => ({
@@ -135,8 +175,43 @@ export function jsonLdFor(path) {
   if (path === '/') {
     graph.push(webPage('WebPage'))
   } else {
-    graph.push(webPage(path === '/contact' ? 'ContactPage' : path === '/about' ? 'AboutPage' : path === '/case-studies' ? 'CollectionPage' : 'WebPage'))
+    graph.push(webPage(path === '/contact' ? 'ContactPage' : path === '/about' ? 'AboutPage' : (path === '/case-studies' || path === '/blog') ? 'CollectionPage' : 'WebPage'))
     graph.push(breadcrumb(path))
+  }
+
+  if (path === '/blog') {
+    graph.push({
+      '@type': 'Blog',
+      '@id': `${canonicalFor('/blog')}#blog`,
+      name: 'Bersk Technologies blog',
+      url: canonicalFor('/blog'),
+      publisher: { '@id': orgId },
+      blogPost: POSTS.map((p) => ({
+        '@type': 'BlogPosting',
+        headline: p.title,
+        url: canonicalFor(`/blog/${p.slug}`),
+        datePublished: p.date,
+      })),
+    })
+  }
+
+  if (post) {
+    graph.push({
+      '@type': 'BlogPosting',
+      '@id': `${canonicalFor(path)}#article`,
+      headline: post.title,
+      description: post.description,
+      url: canonicalFor(path),
+      mainEntityOfPage: { '@type': 'WebPage', '@id': `${canonicalFor(path)}#webpage` },
+      datePublished: post.date,
+      dateModified: post.date,
+      author: { '@id': orgId },
+      publisher: { '@id': orgId },
+      image: [`${SITE.url}${SITE.image}`],
+      articleSection: post.category,
+      wordCount: wordCount(post),
+      inLanguage: 'en',
+    })
   }
 
   if (path === '/services') {
@@ -190,7 +265,7 @@ export function headTags(pathname) {
       `<link rel="canonical" href="${url}" />`,
       `<link rel="alternate" hreflang="en" href="${url}" />`,
       `<link rel="alternate" hreflang="x-default" href="${url}" />`,
-      `<meta property="og:type" content="website" />`,
+      `<meta property="og:type" content="${p.post ? 'article' : 'website'}" />`,
       `<meta property="og:site_name" content="${esc(SITE.name)}" />`,
       `<meta property="og:locale" content="${SITE.locale}" />`,
       `<meta property="og:title" content="${esc(p.title)}" />`,

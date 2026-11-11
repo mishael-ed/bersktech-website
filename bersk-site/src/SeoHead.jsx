@@ -36,7 +36,7 @@ export default function SeoHead() {
       if (canonical) canonical.remove()
     } else {
       upsert('link[rel="canonical"]', 'link', { rel: 'canonical', href: url })
-      upsert('meta[property="og:type"]', 'meta', { property: 'og:type', content: 'website' })
+      upsert('meta[property="og:type"]', 'meta', { property: 'og:type', content: p.post ? 'article' : 'website' })
       upsert('meta[property="og:site_name"]', 'meta', { property: 'og:site_name', content: SITE.name })
       upsert('meta[property="og:title"]', 'meta', { property: 'og:title', content: p.title })
       upsert('meta[property="og:description"]', 'meta', { property: 'og:description', content: p.description })
