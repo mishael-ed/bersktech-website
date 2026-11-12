@@ -1337,3 +1337,6 @@ img { display: block; max-width: 100%; }
 
 .nav-link { white-space: nowrap; }
 @media (max-width: 900px) and (min-width: 641px) { .nav-link { padding: 8px 10px; letter-spacing: 0.08em; } }
+
+.contact-hero-card .contact-hero-mark + .contact-hero-mail { margin-top: 26px; }
+.contact-hero-mail:hover svg:last-child { transform: translate(3px, -3px); }

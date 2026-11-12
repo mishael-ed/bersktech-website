@@ -109,6 +109,13 @@ const organization = () => ({
   image: `${SITE.url}${SITE.image}`,
   description: PAGES['/'].description,
   slogan: 'Tech solutions tailored for you.',
+  email: 'hello@bersk.tech',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    email: 'hello@bersk.tech',
+    availableLanguage: 'English',
+  },
   sameAs: [SOCIAL.instagram, SOCIAL.facebook],
   address: { '@type': 'PostalAddress', addressLocality: 'Lagos', addressRegion: 'Lagos State', addressCountry: 'NG' },
   founder: { '@type': 'Person', name: 'Ed Mishael', jobTitle: 'CEO and Founder' },

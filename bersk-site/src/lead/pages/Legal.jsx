@@ -30,7 +30,7 @@ export function Privacy() {
         <p>We keep your details for as long as needed to follow up on your enquiry and for our business records, then delete or anonymise them.</p>
 
         <h2>Your rights</h2>
-        <p>Under the Nigeria Data Protection Act you can ask to see, correct or delete your personal data, or object to how we use it. To do that, message us using the contact details we replied to you with, and we will respond promptly.</p>
+        <p>Under the Nigeria Data Protection Act you can ask to see, correct or delete your personal data, or object to how we use it. To do that, email us at hello@bersk.tech and we will respond promptly.</p>
 
         <h2>Changes</h2>
         <p>We may update this policy and will change the date above when we do.</p>

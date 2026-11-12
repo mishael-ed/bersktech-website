@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { MapPin } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
 import { SOCIAL } from './social.js'
 
 export default function Footer() {
@@ -50,6 +50,7 @@ export default function Footer() {
           <div className="footer-col">
             <div className="footer-col-head">Contact</div>
             <ul>
+              <li><a href="mailto:hello@bersk.tech"><Mail size={13} /> hello@bersk.tech</a></li>
               <li><span><MapPin size={13} /> Lagos, Nigeria · Serving clients worldwide</span></li>
             </ul>
           </div>

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, ArrowLeft, ArrowUpRight, CheckCircle2, Mail } from 'lucide-react'
 import { submitLead } from '../lib/leads.js'
 
 const next = [
@@ -63,6 +63,10 @@ export default function Contact() {
             <div className="contact-hero-top">Bersk Technologies</div>
             <h1 className="contact-hero-title">Great ideas start with a conversation.</h1>
             <img src="/logos/mark-white.webp" alt="" className="contact-hero-mark" width="47" height="64" decoding="async" />
+            <a href="mailto:hello@bersk.tech" className="contact-hero-mail">
+              <span><Mail size={16} /> hello@bersk.tech</span>
+              <ArrowUpRight size={16} />
+            </a>
           </div>
 
           <h2 className="contact-next-title">What happens next</h2>
