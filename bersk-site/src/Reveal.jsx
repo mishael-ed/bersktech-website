@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 
 const SELECTOR = [
   '.section-eyebrow', '.section-title', '.section-body',
-  '.glass-card', '.showcase-frame', '.about-hero', '.about-teaser-media', '.about-body > *', '.check-item', '.service-block', '.includes-list li',
+  '.glass-card', '.showcase-frame', '.about-hero', '.why-visual', '.about-teaser-media', '.about-body > *', '.check-item', '.service-block', '.includes-list li',
   '.contact-step', '.contact-who', '.contact-response-note',
   '.cta-title', '.cta-sub', '.cta-inner > .btn', '.local-cta-note', '.problem-note',
 ].join(',')

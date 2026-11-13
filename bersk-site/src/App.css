@@ -1340,3 +1340,15 @@ img { display: block; max-width: 100%; }
 
 .contact-hero-card .contact-hero-mark + .contact-hero-mail { margin-top: 26px; }
 .contact-hero-mail:hover svg:last-child { transform: translate(3px, -3px); }
+
+/* ═══ OFFICE PHOTO (inside "Why Bersk") ═══ */
+.why-top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; margin-bottom: 44px; }
+.why-top .section-body { margin-bottom: 0; }
+.why-visual {
+  margin: 0; line-height: 0; overflow: hidden; border-radius: 6px; aspect-ratio: 16 / 10;
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 30px 60px -30px rgba(0,0,40,0.6);
+}
+.why-visual img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1); }
+@media (hover: hover) { .why-visual:hover img { transform: scale(1.04); } }
+@media (max-width: 900px) { .why-top { grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; } }

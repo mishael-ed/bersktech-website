@@ -218,14 +218,28 @@ export default function Home() {
       {/* ── WHY BERSK ── */}
       <section className="section section-solid why-section">
         <div className="container">
-          <div className="section-eyebrow">Why Bersk</div>
-          <h2 className="section-title">
-            Most developers just write code.{' '}
-            <span className="gradient-text">We give you a proven system.</span>
-          </h2>
-          <p className="section-body">
-            Our AI-powered, human-led development process takes your idea from plan to launch, so you validate before you overspend and build the right thing, the right way, the first time.
-          </p>
+          <div className="why-top">
+            <div className="why-copy">
+              <div className="section-eyebrow">Why Bersk</div>
+              <h2 className="section-title">
+                Most developers just write code.{' '}
+                <span className="gradient-text">We give you a proven system.</span>
+              </h2>
+              <p className="section-body">
+                Our AI-powered, human-led development process takes your idea from plan to launch, so you validate before you overspend and build the right thing, the right way, the first time.
+              </p>
+            </div>
+            <figure className="why-visual">
+              <img
+                src="/office-1600.webp"
+                srcSet="/office-1040.webp 1040w, /office-1600.webp 1600w"
+                sizes="(max-width: 900px) 92vw, 520px"
+                width="1600" height="1000"
+                alt="The Bersk logo on the glass wall of a modern meeting room"
+                loading="lazy" decoding="async"
+              />
+            </figure>
+          </div>
           <ul className="check-list">
             {differentiators.map((d) => (
               <li key={d} className="check-item">
